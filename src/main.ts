@@ -7,6 +7,13 @@ import EndScene from './scenes/EndScene';
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
   parent: 'game',
+  physics: {
+    default: 'arcade',
+    arcade: {
+      gravity: { x: 0, y: 300 }, // 重力を設定（必要に応じて調整）
+      debug: false,
+    },
+  },
   scale: {
     mode: Phaser.Scale.FIT, // 画面にフィットさせる
     autoCenter: Phaser.Scale.CENTER_BOTH, // 中央に配置

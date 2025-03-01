@@ -7,15 +7,38 @@ export default class EndScene extends Phaser.Scene {
 
   create(): void {
     const { width, height } = this.cameras.main;
-    const endText = this.add.text(width / 2, height / 2, 'エンド画面\nクリックでタイトルに戻る', {
+    this.add.text(width / 2, height / 3, 'エンド画面', {
       fontSize: '32px',
       align: 'center'
-    });
-    endText.setOrigin(0.5);
+    }).setOrigin(0.5);
 
-    // クリックでTitleSceneへ戻る
-    this.input.once('pointerdown', () => {
+    // 「タイトルに戻る」ボタン
+    const titleButton = this.add.text(width / 2, height / 2, 'タイトルに戻る', {
+      fontSize: '24px',
+      color: '#ffffff',
+      backgroundColor: '#0000ff'
+    })
+      .setOrigin(0.5)
+      .setPadding(10)
+      .setInteractive({ useHandCursor: true });
+
+    titleButton.on('pointerdown', () => {
       this.scene.start('TitleScene');
     });
+
+    // 「リスタート」ボタン
+    const restartButton = this.add.text(width / 2, height / 2 + 100, 'リスタート', {
+      fontSize: '24px',
+      color: '#ffffff',
+      backgroundColor: '#00aa00'
+    })
+      .setOrigin(0.5)
+      .setPadding(10)
+      .setInteractive({ useHandCursor: true });
+
+    restartButton.on('pointerdown', () => {
+      this.scene.start('GameScene');
+    });
+
   }
 }
