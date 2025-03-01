@@ -7,14 +7,16 @@ export default class TitleScene extends Phaser.Scene {
 
   create(): void {
     const { width, height } = this.cameras.main;
-    const titleText = this.add.text(width / 2, height / 2, 'タイトル画面\nクリックで開始', {
+    // 画面中央にタイトルテキストを表示
+    const titleText = this.add.text(width / 2, height / 2, 'タイトル画面\nタッチして開始', {
       fontSize: '32px',
-      align: 'center'
+      align: 'center',
     });
     titleText.setOrigin(0.5);
 
-    // ユーザーのクリックでGameSceneへ遷移
+    // タッチまたはクリックで反応
     this.input.once('pointerdown', () => {
+      console.log('タッチされました！');
       this.scene.start('GameScene');
     });
   }
