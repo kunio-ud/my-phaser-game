@@ -16,7 +16,6 @@ export default class TitleScene extends Phaser.Scene {
 
     // タッチまたはクリックで反応
     this.input.once('pointerdown', () => {
-      console.log('タッチされました！');
       this.scene.start('GameScene');
     });
   }
