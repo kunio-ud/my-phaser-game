@@ -16,7 +16,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create(): void {
-    const { width, height } = this.scale;
+    const { height } = this.scale;
 
     // プレイヤーを画面左側中央に配置
     this.player = this.physics.add.sprite(100, height / 2, 'player');
@@ -82,15 +82,15 @@ export default class GameScene extends Phaser.Scene {
   }
 
   hitObstacle(
-    player: Phaser.Physics.Arcade.Sprite,
-    obstacle: Phaser.Types.Physics.Arcade.GameObjectWithBody
+    _player: Phaser.Physics.Arcade.Sprite,
+    _obstacle: Phaser.Types.Physics.Arcade.GameObjectWithBody
   ): void {
     // プレイヤーが障害物に衝突した場合、シーンを再起動（リスタート）
     this.scene.start('EndScene');
   }
 
 
-  update(time: number, delta: number): void {
+  update(_time: number, delta: number): void {
     this.obstacles.children.each((obstacle) => {
       const body = obstacle.body as Phaser.Physics.Arcade.Body;
       body.velocity.y = 0;
